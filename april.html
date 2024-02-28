@@ -5,18 +5,18 @@
     <title>How many days until 1 April 2024?</title>
 </head>
 <body>
-        <h1>How many days until 1 April 2024?</h1>
-        <h2 id="counter-april"></h2>
-        <h1>How many days until 25 March 2024?</h1>
+        <h1>How many days until 23 March 2024?</h1>
         <h2 id="counter-march"></h2>
     <script type="text/javascript">
     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
     const currentDate = new Date();
-    const april2024 = new Date(2024, 3, 1);
-    const lateMarch2024 = new Date(2024, 2, 25);
+    const lateMarch2024 = new Date(2024, 2, 23);
     
-    document.getElementById("counter-april").innerHTML = Math.round(Math.abs((april2024 - currentDate) / oneDay));
     document.getElementById("counter-march").innerHTML = Math.round(Math.abs((lateMarch2024 - currentDate) / oneDay));
+
+    if (currentDate > new Date(2024, 2, 23)) {
+        document.getElementById("counter-march").innerHTML = "It is past 23 March 2024";        
+    }
     </script>
 </body>
 </html>
