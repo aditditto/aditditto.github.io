@@ -1,22 +1,25 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How many days until 1 April 2024?</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>How many days until 1 April 2024?</title>
+    </head>
+    <body>
         <h1>How many days until 23 March 2024?</h1>
         <h2 id="counter-march"></h2>
-    <script type="text/javascript">
-    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    const currentDate = new Date();
-    const lateMarch2024 = new Date(2024, 2, 23);
-    
-    document.getElementById("counter-march").innerHTML = Math.round(Math.abs((lateMarch2024 - currentDate) / oneDay));
+        <script type="text/javascript">
+            const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+            const currentDate = new Date();
+            const lateMarch2024 = new Date(2024, 2, 23);
 
-    if (currentDate > new Date(2024, 2, 23)) {
-        document.getElementById("counter-march").innerHTML = "It is past 23 March 2024";        
-    }
-    </script>
-</body>
+            document.getElementById("counter-march").innerHTML = Math.round(
+                Math.abs((lateMarch2024 - currentDate) / oneDay)
+            );
+
+            if (currentDate > new Date(2024, 2, 23)) {
+                document.getElementById("counter-march").innerHTML =
+                    "It is past 23 March 2024";
+            }
+        </script>
+    </body>
 </html>
