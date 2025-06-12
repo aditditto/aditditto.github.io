@@ -3,25 +3,32 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Interest Retirement calculator</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+        <title>Savings Target Calculator</title>
     </head>
 
     <body>
-        <h1>Savings Calculator</h1>
-        <section>
-            <p>How much you want to spend each month</p>
-            <input type="number" id="monthlySpendingGoal" />
-            <p>Yearly interest rate (percent)</p>
-            <input type="number" value="5" id="interestRate" />
-            <p>How much you need to live off interest</p>
-            <p id="savingGoalAmount">0</p>
-            <p>How much savings you have now</p>
-            <input type="number" value="0" id="currentSavings" />
-            <p>How many years you want to achieve the savings</p>
-            <input type="number" value="20" id="yearsOfSaving" />
-            <p>How much you have to save per month</p>
-            <p id="targetMonthlySaving">0</p>
-        </section>
+        <header><a href="./index.html">Home</a></header>
+        <main>
+            <h1>Savings Target Calculator</h1>
+            <a href="./savings-compound-calculator.html"
+                >Savings Compound Calculator</a
+            >
+            <section>
+                <p>How much you want to spend each month post retirement</p>
+                <input type="number" id="monthlySpendingGoal" />
+                <p>Yearly interest rate (percent)</p>
+                <input type="number" value="5" id="interestRate" />
+                <p>How much you need to live off interest</p>
+                <p id="savingGoalAmount">0</p>
+                <p>How much savings you have now</p>
+                <input type="number" value="0" id="currentSavings" />
+                <p>How many years you want to achieve the savings</p>
+                <input type="number" value="20" id="yearsOfSaving" />
+                <p>How much you have to save per month</p>
+                <p id="targetMonthlySaving">0</p>
+            </section>
+        </main>
     </body>
     <script type="text/javascript">
         const monthlySpendingGoalInput = document.getElementById(
@@ -58,7 +65,6 @@
             if (!currentSavingsString || !yearsOfSavingString) {
                 return;
             }
-            const monthOfSaving = Number(yearsOfSavingString);
             const currentSavings = Number(currentSavingsString);
             const yearsOfSaving = Number(yearsOfSavingString);
             const geometricRatio = 1 + interestRate / 100;

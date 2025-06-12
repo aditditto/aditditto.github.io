@@ -6,6 +6,9 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: 1.5rem;
+    max-width: 44rem;
+    margin: auto;
 }
 img {
     max-width: 50%;
@@ -17,7 +20,4 @@ img {
 
 main {
     flex: 1;
-    display: block;
-    max-width: fit-content;
-    margin: auto;
 }
