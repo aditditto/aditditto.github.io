@@ -11,9 +11,7 @@
         <header><a href="./index.html">Home</a></header>
         <main>
             <h1>Savings Compound Calculator</h1>
-            <a href="./savings-target-calculator.html"
-                >Savings Target Calculator</a
-            >
+            <a href="./savings-target-calculator.html">Savings Target Calculator</a>
             <section>
                 <p>How much you save per month</p>
                 <input type="number" value="100" id="monthlyDeposit" />
@@ -36,9 +34,7 @@
         const currentSavingsInput = document.getElementById("currentSavings");
         const yearsOfSavingInput = document.getElementById("yearsOfSaving");
         const finalAmountP = document.getElementById("finalAmount");
-        const finalMonthlySpendingP = document.getElementById(
-            "finalMonthlySpending"
-        );
+        const finalMonthlySpendingP = document.getElementById("finalMonthlySpending");
 
         readQueryString();
         updateFinalAmount();
@@ -68,11 +64,9 @@
             const yearsOfSaving = Number(yearsOfSavingString);
             const geometricRatio = 1 + interestRate / 100;
 
-            const initialSavingsCompounded =
-                currentSavings * geometricRatio ** yearsOfSaving;
+            const initialSavingsCompounded = currentSavings * geometricRatio ** yearsOfSaving;
             const savingsGeometricSum =
-                (yearlyDeposit * (geometricRatio ** yearsOfSaving - 1)) /
-                (geometricRatio - 1);
+                (yearlyDeposit * (geometricRatio ** yearsOfSaving - 1)) / (geometricRatio - 1);
             const finalAmount = initialSavingsCompounded + savingsGeometricSum;
 
             finalAmountP.textContent = finalAmount.toLocaleString();
@@ -85,17 +79,14 @@
 
         function readQueryString() {
             const urlParams = new URLSearchParams(window.location.search);
-            [
-                "monthlyDeposit",
-                "interestRate",
-                "currentSavings",
-                "yearsOfSaving",
-            ].forEach((inputId) => {
-                const val = urlParams.get(inputId);
-                if (val && !isNaN(val)) {
-                    document.getElementById(inputId).value = val;
+            ["monthlyDeposit", "interestRate", "currentSavings", "yearsOfSaving"].forEach(
+                (inputId) => {
+                    const val = urlParams.get(inputId);
+                    if (val && !isNaN(val)) {
+                        document.getElementById(inputId).value = val;
+                    }
                 }
-            });
+            );
         }
     </script>
 </html>

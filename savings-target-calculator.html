@@ -11,9 +11,7 @@
         <header><a href="./index.html">Home</a></header>
         <main>
             <h1>Savings Target Calculator</h1>
-            <a href="./savings-compound-calculator.html"
-                >Savings Compound Calculator</a
-            >
+            <a href="./savings-compound-calculator.html">Savings Compound Calculator</a>
             <section>
                 <p>How much you want to spend each month post retirement</p>
                 <input type="number" id="monthlySpendingGoal" />
@@ -31,16 +29,12 @@
         </main>
     </body>
     <script type="text/javascript">
-        const monthlySpendingGoalInput = document.getElementById(
-            "monthlySpendingGoal"
-        );
+        const monthlySpendingGoalInput = document.getElementById("monthlySpendingGoal");
         const interestRateInput = document.getElementById("interestRate");
         const savingGoalP = document.getElementById("savingGoalAmount");
         const currentSavingsInput = document.getElementById("currentSavings");
         const yearsOfSavingInput = document.getElementById("yearsOfSaving");
-        const targetMonthlySavingP = document.getElementById(
-            "targetMonthlySaving"
-        );
+        const targetMonthlySavingP = document.getElementById("targetMonthlySaving");
 
         readQueryString();
         updateSavingGoal();
@@ -68,30 +62,23 @@
             const currentSavings = Number(currentSavingsString);
             const yearsOfSaving = Number(yearsOfSavingString);
             const geometricRatio = 1 + interestRate / 100;
-            const initialSavingsCompounded =
-                currentSavings * geometricRatio ** yearsOfSaving;
+            const initialSavingsCompounded = currentSavings * geometricRatio ** yearsOfSaving;
             const toSaveYearly =
-                ((savingGoal - initialSavingsCompounded) *
-                    (geometricRatio - 1)) /
+                ((savingGoal - initialSavingsCompounded) * (geometricRatio - 1)) /
                 (geometricRatio ** yearsOfSaving - 1);
-            targetMonthlySavingP.textContent = (
-                toSaveYearly / 12
-            ).toLocaleString();
+            targetMonthlySavingP.textContent = (toSaveYearly / 12).toLocaleString();
         }
 
         function readQueryString() {
             const urlParams = new URLSearchParams(window.location.search);
-            [
-                "monthlySpendingGoal",
-                "interestRate",
-                "currentSavings",
-                "yearsOfSaving",
-            ].forEach((inputId) => {
-                const val = urlParams.get(inputId);
-                if (val && !isNaN(val)) {
-                    document.getElementById(inputId).value = val;
+            ["monthlySpendingGoal", "interestRate", "currentSavings", "yearsOfSaving"].forEach(
+                (inputId) => {
+                    const val = urlParams.get(inputId);
+                    if (val && !isNaN(val)) {
+                        document.getElementById(inputId).value = val;
+                    }
                 }
-            });
+            );
         }
     </script>
 </html>
