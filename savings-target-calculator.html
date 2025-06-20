@@ -56,7 +56,7 @@
             if (!spendingGoalString || !interestRateString) {
                 return;
             }
-            const spendingGoal = Number(spendingGoalString);
+            const spendingGoal = Number(unformatCurrency(spendingGoalString));
             const interestRate = Number(interestRateString);
             const savingGoal = (12 * spendingGoal) / (interestRate / 100);
             savingGoalP.textContent = savingGoal.toLocaleString();

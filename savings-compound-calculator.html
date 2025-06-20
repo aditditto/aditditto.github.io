@@ -64,7 +64,7 @@
                 return;
             }
 
-            const monthlyDeposit = Number(monthlyDepositString);
+            const monthlyDeposit = Number(unformatCurrency(monthlyDepositString));
             const yearlyDeposit = monthlyDeposit * 12;
             const interestRate = Number(interestRateString);
             const currentSavings = Number(currentSavingsString);
