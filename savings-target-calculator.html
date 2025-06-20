@@ -14,7 +14,7 @@
             <a href="./savings-compound-calculator.html">Savings Compound Calculator</a>
             <section>
                 <p>How much you want to spend each month post retirement</p>
-                <input type="number" id="monthlySpendingGoal" />
+                <input type="text" value="100000" id="monthlySpendingGoal" />
                 <p>Yearly interest rate (percent)</p>
                 <input type="number" value="5" id="interestRate" />
                 <p>How much you need to live off interest</p>
@@ -35,9 +35,16 @@
         const currentSavingsInput = document.getElementById("currentSavings");
         const yearsOfSavingInput = document.getElementById("yearsOfSaving");
         const targetMonthlySavingP = document.getElementById("targetMonthlySaving");
+        const locale = "en-US";
+        const currencyFormatter = new Intl.NumberFormat(locale, {
+            style: "decimal",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
 
         readQueryString();
         updateSavingGoal();
+        monthlySpendingGoalInput.value = currencyFormatter.format(monthlySpendingGoalInput.value);
         monthlySpendingGoalInput.addEventListener("input", updateSavingGoal);
         interestRateInput.addEventListener("input", updateSavingGoal);
         currentSavingsInput.addEventListener("input", updateSavingGoal);
@@ -80,5 +87,27 @@
                 }
             );
         }
+
+        function unformatCurrency(value) {
+            return parseFloat(value.replace(/[^0-9.]/g, ""));
+        }
+
+        monthlySpendingGoalInput.addEventListener("blur", function () {
+            let value = unformatCurrency(this.value);
+            if (!isNaN(value)) {
+                this.value = currencyFormatter.format(value);
+            } else {
+                this.value = "";
+            }
+        });
+
+        monthlySpendingGoalInput.addEventListener("focus", function () {
+            let value = unformatCurrency(this.value);
+            if (!isNaN(value)) {
+                this.value = value.toString();
+            } else {
+                this.value = "";
+            }
+        });
     </script>
 </html>

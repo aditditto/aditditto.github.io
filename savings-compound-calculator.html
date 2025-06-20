@@ -14,7 +14,7 @@
             <a href="./savings-target-calculator.html">Savings Target Calculator</a>
             <section>
                 <p>How much you save per month</p>
-                <input type="number" value="100" id="monthlyDeposit" />
+                <input type="text" value="100000" id="monthlyDeposit" />
                 <p>Yearly interest rate (percent)</p>
                 <input type="number" value="5" id="interestRate" />
                 <p>How much savings you have now</p>
@@ -35,9 +35,16 @@
         const yearsOfSavingInput = document.getElementById("yearsOfSaving");
         const finalAmountP = document.getElementById("finalAmount");
         const finalMonthlySpendingP = document.getElementById("finalMonthlySpending");
+        const locale = "en-US";
+        const currencyFormatter = new Intl.NumberFormat(locale, {
+            style: "decimal",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
 
         readQueryString();
         updateFinalAmount();
+        monthlyDepositInput.value = currencyFormatter.format(monthlyDepositInput.value);
         monthlyDepositInput.addEventListener("input", updateFinalAmount);
         interestRateInput.addEventListener("input", updateFinalAmount);
         currentSavingsInput.addEventListener("input", updateFinalAmount);
@@ -88,5 +95,27 @@
                 }
             );
         }
+
+        function unformatCurrency(value) {
+            return parseFloat(value.replace(/[^0-9.]/g, ""));
+        }
+
+        monthlyDepositInput.addEventListener("blur", function () {
+            let value = unformatCurrency(this.value);
+            if (!isNaN(value)) {
+                this.value = currencyFormatter.format(value);
+            } else {
+                this.value = "";
+            }
+        });
+
+        monthlyDepositInput.addEventListener("focus", function () {
+            let value = unformatCurrency(this.value);
+            if (!isNaN(value)) {
+                this.value = value.toString();
+            } else {
+                this.value = "";
+            }
+        });
     </script>
 </html>
